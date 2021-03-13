@@ -8,3 +8,6 @@ My implementation of some of the Standard C Library functions including some add
 ### How does it work?
 
 The goal is to create a library called libft.a from the source files so I can later use that library from other projects at 42.
+
+### How to test?
+    make test && ./tester
