@@ -13,12 +13,12 @@
 NAME = libft.a
 HEADER_FILES = libft.h
 CC=gcc
-# CFLAGS= -Wall -Werror -Wextra
 CFLAGS= -Wall -Werror -Wextra -fsanitize=leak -fsanitize=address
 LDFLAGS= -shared -fPIC
 CREATE_LIB=ar rcs
+TEST=test/test.c
 
-SRC_FILES= \
+SRC_FILES=			\
 	ft_isalpha.c    \
  	ft_isdigit.c    \
   	ft_isalnum.c    \
@@ -92,16 +92,8 @@ so: $(SRC_FILES) $(BONUS_FILES)
 	$(CC) $(CFLAGS) $(LDFLAGS) -o libft.so $^
 
 re: fclean all
-.PHONY: all clean fclean re bonus
-
-
-TEST=test/test.c
-TEST_CODAM=test/test_codam.c
 
 test: $(SRC_OBJ) $(BONUS_OBJ)
 	$(CC) $(CFLAGS) $(SRC_OBJ) $(BONUS_OBJ) $(TEST) -o tester
 
-testCodam:$(OBJ_FILES)
-	$(CC) $(CFLAGS) $(OBJ_FILES) $(TEST_CODAM) -o tester
-
-
+.PHONY: all clean fclean re bonus tester
